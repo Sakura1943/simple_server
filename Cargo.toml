@@ -1,6 +1,6 @@
 [package]
 name = "simple_server"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["sakunia <sakunia@foxmail.com>"]
 description = "A simple http server"
@@ -17,3 +17,7 @@ tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
 [build-dependencies]
 clap = { version = "4.1.4", features = ["derive"] }
 clap_complete = "4.1.1"
+
+[profile.release]
+lto = true
+strip = true
