@@ -14,7 +14,7 @@ async fn main() -> Result<()> {
 
     display_info(&bind, port, &dir, &index_file)?;
 
-    env::set_var("RUST_LOG", "debug=debug");
+    env::set_var("RUST_LOG", "poem=debug");
     tracing_subscriber::fmt::init();
 
     build_server(&bind, port, dir, index_file).await?;
@@ -36,9 +36,9 @@ fn display_info(bind: &str, port: u16, dir: &PathBuf, index_file: &str) -> Resul
     }
 
     let content = format!(
-        "{3} Bound: {}
-{3} Serving path: {}
-{3} Index file: {}",
+        "{3} Bound: {0}
+{3} Serving path: {1}
+{3} Index file: {2}",
         bound.bright_green().bold(),
         path.bright_yellow().bold(),
         index_file.bright_green().bold(),
