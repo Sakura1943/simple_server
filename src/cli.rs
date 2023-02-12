@@ -9,7 +9,7 @@ pub struct Cli {
     #[arg(short, long, default_value_t = 8000)]
     pub port: u16,
     /// Server bind address
-    #[arg(short, long, value_name = "HOST", default_value = "127.0.0.1")]
+    #[arg(short, long, value_name = "HOST", default_value = "0.0.0.0")]
     pub bind: String,
     /// Server bind directory
     #[arg(short, long, default_value = "./")]
