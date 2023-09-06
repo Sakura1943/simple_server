@@ -9,15 +9,14 @@ use poem::{
 use std::path::PathBuf;
 
 pub async fn build_server(bind: &str, port: u16, dir: PathBuf, index_file: String) -> Result<()> {
-    let cors = Cors::new()
-        .allow_origin("*")
-        .allow_methods([Method::GET, Method::POST]);
+    let cors = Cors::new().default();
     let app = Route::new()
         .nest(
             "/",
             StaticFilesEndpoint::new(dir)
                 .index_file(index_file)
-                .show_files_listing(),
+                .show_files_listing()
+                .fallback_to_index(),
         )
         .with(Tracing)
         .with(cors);
