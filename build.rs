@@ -2,7 +2,7 @@
 mod cli;
 use clap_complete::{
     generate_to,
-    Shell::{Bash, Fish, Zsh},
+    Shell::{Bash, Fish, Zsh, PowerShell},
 };
 use cli::Cli;
 use std::path::Path;
@@ -19,5 +19,6 @@ fn main() -> Result<()> {
     generate_to(Bash, cmd, bin_name, dir)?;
     generate_to(Zsh, cmd, bin_name, dir)?;
     generate_to(Fish, cmd, bin_name, dir)?;
+    generate_to(PowerShell, cmd, bin_name, dir)?;
     Ok(())
 }
