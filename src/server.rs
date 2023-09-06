@@ -1,7 +1,6 @@
 use super::Result;
 use poem::{
     endpoint::StaticFilesEndpoint,
-    http::Method,
     listener::TcpListener,
     middleware::{Cors, Tracing},
     EndpointExt, Route, Server,
