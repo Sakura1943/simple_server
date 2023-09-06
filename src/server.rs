@@ -16,7 +16,8 @@ pub async fn build_server(bind: &str, port: u16, dir: PathBuf, index_file: Strin
             StaticFilesEndpoint::new(dir)
                 .index_file(index_file)
                 .show_files_listing()
-                .fallback_to_index(),
+                .fallback_to_index()
+                .redirect_to_slash_directory(),
         )
         .with(Tracing)
         .with(cors);
