@@ -9,7 +9,7 @@ use poem::{
 use std::path::PathBuf;
 
 pub async fn build_server(bind: &str, port: u16, dir: PathBuf, index_file: String) -> Result<()> {
-    let cors = Cors::new().default();
+    let cors = Cors::default();
     let app = Route::new()
         .nest(
             "/",
