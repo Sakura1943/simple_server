@@ -2,7 +2,7 @@ use super::Result;
 use poem::{
     endpoint::StaticFilesEndpoint,
     listener::TcpListener,
-    middleware::{Cors, Tracing},
+    middleware::{Compression, Cors, Tracing},
     EndpointExt, Route, Server,
 };
 use std::path::PathBuf;
@@ -19,7 +19,8 @@ pub async fn build_server(bind: &str, port: u16, dir: PathBuf, index_file: Strin
                 .redirect_to_slash_directory(),
         )
         .with(Tracing)
-        .with(cors);
+        .with(cors)
+        .with(Compression::default());
     Server::new(TcpListener::bind(format!("{bind}:{port}")))
         .run(app)
         .await?;
