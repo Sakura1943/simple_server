@@ -35,7 +35,7 @@ jobs:
 
       - name: Pack Artifacts
         env:
-          RELEASE_NAME: conceal-${{ matrix.target }}
+          RELEASE_NAME: simple_server-${{ matrix.target }}
           ARTIFACTS_DIR: target/${{ matrix.target }}/release
         run: |
           mkdir $RELEASE_NAME
@@ -48,4 +48,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: conceal-${{ matrix.target }}.${{ matrix.archive }}
+          files: simple_server-${{ matrix.target }}.${{ matrix.archive }}
